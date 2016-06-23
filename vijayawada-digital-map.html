@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="citylogo.jpg" type="image/jpg" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="css\index.css">
+    <title>
+      direction service
+    </title><!-- 
+    developed by Chilaka Ramakrishna,Bits pilani
+    developed by Garlapati Anoop,Bits pilani -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="material.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <body>
+    <script type="text/javascript" src="material.min.js"></script>
+    <script type="text/javascript" src="jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="jquery-ui.min.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+    <script src = "latlng.js" type = "text/javascript"></script>
+    <script src = "main.js" type = "text/javascript"></script>
+    <script src = "wth.js" type = "text/javascript"></script>
+    <script src = "select.js" type = "text/javascript"></script>
+    <script src = "directions.js" type = "text/javascript"></script>
+    <script src = "elurugunturu.js" type = "text/javascript"></script>
+    <script src = "eluruhyd.js" type = "text/javascript"></script>
+    <script src = "hydmachili.js" type = "text/javascript"></script>
+    <script src = "hyd-gun-ongole.js" type = "text/javascript"></script>
+    <script src = "gunibri.js" type = "text/javascript"></script>
+    <script src = "eluruibri.js" type = "text/javascript"></script>
+    <script src = "visakhyd1.js" type = "text/javascript"></script>
+    <script src = "visakchen1.js" type = "text/javascript"></script>
+    <script src = "ibrihanum.js" type = "text/javascript"></script>
+    <script src = "hydchen.js" type = "text/javascript"></script>
+    <script src = "nktpml.js" type = "text/javascript"></script>
+    <script src = "ibrigann.js" type = "text/javascript"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js" type = "text/javascript"></script>
+    
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Mn_qaBCfWM4bQdnekIWlHSSz0e7W7I8&callback=initMap&libraries=places,drawing,geometry,visualization">
+      </script>
+
+      <!-- html starts here-->
+      <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <div class="mdl-layout__drawer" id="drawerid">
+          <span class="mdl-layout-title" id="titleid">Vijayawada City</span>
+          <nav class="mdl-navigation">
+            <div id = 'sidebar'>
+      <form>
+        <div>
+          <span style="cursor:pointer; margin-left: 10px; font-size: 16px;" onclick="openNav()"><strong>Weather</strong></span>
+        </div>
+        <div id="policeid" class="uni">
+          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="policecheckbox">
+            <input type="checkbox" id="policecheckbox" class="mdl-checkbox__input" name="policestation" onclick="policecheck()" unchecked>
+            <span class="mdl-checkbox__label">Police stations</span>
+          </label>
+        </div>
+        <div id="busdivid" class="uni">
+          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="busid">
+            <input type="checkbox" id="busid" class="mdl-checkbox__input" name="bus" onclick="buscheck()" unchecked>
+            <span class="mdl-checkbox__label">Bus Stops</span>
+          </label>
+        </div>
+        <div id = "traffic" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="trafficcheckbox">
+          <input type="checkbox" name = "trafficplace" id="trafficcheckbox" class="mdl-checkbox__input"  value ="traffic" onclick="trafficcheck()"> 
+          <span class="mdl-checkbox__label">Traffic density</span>
+        </label>
+        </div>
+        <div id = "healthcamps" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="healthcheckbox">
+          <input type="checkbox" name = "healthcamps" id="healthcheckbox" class="mdl-checkbox__input"  value ="healthcamps" onclick="healthcheck()">
+          <span class="mdl-checkbox__label">Healthcamps</span>
+          </label>
+        </div>
+        <div id = "roadwaysdivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="roadwaysid">
+          <input type="checkbox" name = "roadways" id="roadwaysid" class="mdl-checkbox__input"  value ="roadways" onclick="roadcheck()">
+          <span class="mdl-checkbox__label">Roadways</span>
+          </label>
+        </div>
+
+        <div id="camaccord">
+        <div id="camacc" class="uni">
+        <span class="mdl-checkbox__label"><strong>Cameras</strong><span class="caret" style="float: right; margin-top: 12px;"></span></span>
+        </div>
+
+        <div id="#camdrop">
+        <hr>
+        <div id = "camall" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="camallid" id="camlab">
+          <input type="checkbox" name="camll" id="camallid" class="mdl-checkbox__input"  value="camall"> 
+          <span class="mdl-checkbox__label">Select All</span>
+          </label>         
+        </div>
+
+        <div id = "c1" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect camcbl" for="cameracheckbox">
+          <input type="checkbox" name="cameras" id="cameracheckbox" class="mdl-checkbox__input camcb"  value="cameras" onchange="cameracheck()">
+          <span class="mdl-checkbox__label">Reliance Phase-I cameras</span>
+          </label>          
+        </div>
+        <div id = "redcam" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect camcbl" for="camerabluecheckbox">
+        <input type = "checkbox" name = "cameras" id = "camerabluecheckbox"  class="mdl-checkbox__input camcb" value ="cameras" onchange="camerabluecheck()">
+          <span class="mdl-checkbox__label">Reliance Phase-II cameras</span>
+          </label>
+        </div>
+        <div id = "greencam" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect camcbl" for="cameragreencheckbox">
+        <input type = "checkbox" name = "cameras" id = "cameragreencheckbox"  class="mdl-checkbox__input camcb" value = "cameras" onchange="cameragreencheck()">
+        <span class="mdl-checkbox__label">Apple cameras</span>
+          </label>
+        </div>
+        <hr>
+        </div>
+        </div>
+         <div id = "c2" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="cameracheckbox1">
+          <input type="checkbox" name="cameras" id="cameracheckbox1" class="mdl-checkbox__input"  value="cameras" onclick="">
+          <span class="mdl-checkbox__label">Temporary Parking places</span>
+          </label>          
+        </div>
+         <div id = "permparkdivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="permparkid">
+          <input type="checkbox" name="permparkname" id="permparkid"  class="mdl-checkbox__input" value="permpark" onclick="loadparking()">
+          <span class="mdl-checkbox__label">Parking places</span>          
+        </div>
+
+         <div id = "ghats" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="ghatsid">
+          <input type="checkbox" name="ghats" id="ghatsid" class="mdl-checkbox__input"  value="ghats" onclick="loadghats()">
+          <span class="mdl-checkbox__label">Ghats</span>
+          </label>      
+       </div>
+
+         <div id = "pushkarid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="pushkid">
+          <input type="checkbox" name="pushkar" id="pushkid" class="mdl-checkbox__input"  value="pushkar" onclick="loadpushkar()">
+          <span class="mdl-checkbox__label">Pushkar Nagars</span>
+          </label>
+        </div>
+
+        <div id = "impoff" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="impoffid">
+        <input type = "checkbox" name ="impoffices" id ="impoffid" class="mdl-checkbox__input "  value="impoffices" onclick = "loadimpoffices()">
+          <span class="mdl-checkbox__label">Important Offices</span>
+          </label>
+        </div>
+
+        <div id = "rly" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="rlyid">
+        <input type = "checkbox" name ="railway" id ="rlyid" class="mdl-checkbox__input "  value="railway" onclick = "loadrlys()">
+          <span class="mdl-checkbox__label">Railway Stations</span>
+          </label>
+        </div>
+
+        <div id = "satbus" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="satbusid">
+        <input type = "checkbox" name ="satbuses" id ="satbusid" class="mdl-checkbox__input "  value="satbuses" onclick = "loadsatbus()">
+          <span class="mdl-checkbox__label">Satellite Bus Stations</span>
+          </label>
+        </div>
+
+        <div id = "temples" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="templesid">
+        <input type = "checkbox" name ="temples" id ="templesid" class="mdl-checkbox__input "  value="temples" onclick = "loadtemples()">
+          <span class="mdl-checkbox__label">Temples</span>
+          </label>
+        </div>
+
+        <div id = "trafficpts" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="trafficptsid">
+        <input type = "checkbox" name ="trafficpts" id ="trafficptsid" class="mdl-checkbox__input "  value="trafficpts" onclick = "loadtrafficpts()">
+          <span class="mdl-checkbox__label">Traffic Points</span>
+          </label>
+        </div>
+
+        <div id = "hospitalid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="hospitals">
+          <input type="checkbox" name="hospitals" id="hospitals" class="mdl-checkbox__input"  value="hospitals" onclick="hospitalcheck()">
+          <span class="mdl-checkbox__label">Hospitals</span>
+          </label>         
+        </div>
+
+
+        <div id="vijaccordion">
+        <div id="vijcomm" class="uni">
+        <span class="mdl-checkbox__label"><strong>Vijayawada Commissionerate</strong><span class="caret" style="float: right; margin-top: 12px;"></span></span>
+        </div>
+        
+        <div id="vijcomdrop">
+        <hr>
+        <div id = "vcall" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="vcallid" id="vcallidlab">
+          <input type="checkbox" name="vcsall" id="vcallid" class="mdl-checkbox__input"  value="vcall"> 
+          <span class="mdl-checkbox__label">Select All</span>
+          </label>         
+        </div>
+
+        <div id = "ganvaramdivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="ganvaramid">
+          <input type="checkbox" name="ganvaram" id="ganvaramid" class="mdl-checkbox__input vccb"  value="ganvaram" onclick="ganvaramclick()">
+          <span class="mdl-checkbox__label">Gannavaram </span>
+          </label>         
+        </div>
+        <div id = "ibrihimdivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="ibrihimid">
+          <input type = "checkbox" name ="ibrihimname" id ="ibrihimid" class="mdl-checkbox__input vccb"  value="ibrihim" onclick="ibrihimclick()">
+          <span class="mdl-checkbox__label">Ibrahimpatnam </span>
+          </label>
+        </div>
+        <div id = "kankipadudivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="kankipaduid">
+          <input type = "checkbox" name ="kankipaduname" id ="kankipaduid" class="mdl-checkbox__input vccb"  value="kankipadu" onclick="kankiclick()">
+          <span class="mdl-checkbox__label">Kankipadu </span>
+          </label>
+        </div>
+        <div id = "onetowndivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="onetownid">
+        <input type = "checkbox" name ="onetownname" id ="onetownid" class="mdl-checkbox__input vccb"  value="onetown" onclick="onetownclick()">
+          <span class="mdl-checkbox__label">I Town </span>
+          </label>
+        </div>
+        <div id = "twotowndivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="twotownid">
+        <input type = "checkbox" name ="twotownname" id ="twotownid" class="mdl-checkbox__input vccb"  value="twotown" onclick="twotownclick()">
+          <span class="mdl-checkbox__label">II Town </span>
+          </label>
+        </div>
+        <div id = "governerpetdivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="governerid">
+        <input type = "checkbox" name ="governername" id ="governerid" class="mdl-checkbox__input vccb"  value="governerpet" onclick="governerclick()">
+          <span class="mdl-checkbox__label">Governorpet </span>
+          </label>
+        </div>
+        <div id = "suryaraopetdivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="suryaraoid">
+        <input type = "checkbox" name ="suryaraoname" id ="suryaraoid" class="mdl-checkbox__input vccb"  value="suryaraopet" onclick="suryaraoclick()">
+          <span class="mdl-checkbox__label">Suryaraopet </span>
+          </label>
+        </div>
+        <div id = "snpuramdivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="snpuramid">
+        <input type = "checkbox" name ="snpuramname" id ="snpuramid" class="mdl-checkbox__input vccb"  value="snpuram" onclick="snclick()">
+          <span class="mdl-checkbox__label">Satyanarayanapuram </span>
+          </label>
+        </div>
+        <div id = "kslankadivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="kslankaid">
+        <input type = "checkbox" name ="kslankaname" id ="kslankaid" class="mdl-checkbox__input vccb"  value="kslanka" onclick="kslankaclick()">
+          <span class="mdl-checkbox__label">Krishnalanka </span>
+          </label>
+        </div>
+         <div id = "machavaramdivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="machavaramid">
+        <input type = "checkbox" name ="machavaramname" id ="machavaramid" class="mdl-checkbox__input vccb"  value="machavaram" onclick=" machavaramclick()">
+          <span class="mdl-checkbox__label">Machavaram </span>
+          </label>
+        </div>
+         <div id = "patamatadivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="patamataid">
+        <input type = "checkbox" name ="patamataname" id ="patamataid" class="mdl-checkbox__input vccb"  value="patamata" onclick = "patamataclick()">
+          <span class="mdl-checkbox__label">Patamata </span>
+          </label>
+        </div>
+        <div id = "nunnadivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="nunnaid">
+        <input type = "checkbox" name ="nunnaname" id ="nunnaid" class="mdl-checkbox__input vccb"  value="nunna" onclick = "nunnaclick()">
+          <span class="mdl-checkbox__label">Nunna </span>
+          </label>
+        </div>
+        <div id = "pamidimukkaladivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="pamidimukkalaid">
+        <input type = "checkbox" name ="pamidimukkalaname" id ="pamidimukkalaid"  class="mdl-checkbox__input vccb" value="pamidimukkala" onclick = "pamidimukkalaclick()">
+          <span class="mdl-checkbox__label">Pamidimukkala </span>
+          </label>
+        </div>
+        <div id = "penamulurudivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="penamuluruid">
+        <input type = "checkbox" name ="penamuluruname" id ="penamuluruid" class="mdl-checkbox__input vccb"  value="penamuluru" onclick = "penamuluruclick()">
+          <span class="mdl-checkbox__label">Penamaluru </span>
+          </label>
+        </div>
+        <div id = "thotlavallurudivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="thotlavalluruid">
+        <input type = "checkbox" name ="thotlavalluruname" id ="thotlavalluruid" class="mdl-checkbox__input vccb"  value="thotlavalluru" onclick = "thotlavalluruclick()">
+        <span class="mdl-checkbox__label">Thotlavalluru </span>
+          </label>
+        </div>
+
+        <div id = "vuyyurutowndivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="vuyyuruid">
+        <input type = "checkbox" name ="vuyyuruname" id ="vuyyuruid" class="mdl-checkbox__input vccb"  value="vuyyuru" onclick = "vuyyuruclick()">
+          <span class="mdl-checkbox__label">Vuyyuru Town </span>
+          </label>
+        </div>
+        <div id = "vuyyurururaldivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="vuyyurururalid">
+        <input type = "checkbox" name ="vuyyurururalname" id ="vuyyurururalid" class="mdl-checkbox__input vccb"  value="vuyyururural" onclick = "vuyyurururalclick()">
+          <span class="mdl-checkbox__label">Vuyyuru Rural </span>
+          </label>
+        </div>
+        <div id = "unguturudivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="unguturuid">
+        <input type = "checkbox" name ="unguturuname" id ="unguturuid" class="mdl-checkbox__input vccb"  value="unguturu" onclick = "unguturuclick()">
+          <span class="mdl-checkbox__label">Unguturu </span>
+          </label>
+        </div>
+        <div id = "ajithsinghnagardivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="ajithsinghnagarid">
+        <input type = "checkbox" name ="ajithsinghnagarname" id ="ajithsinghnagarid" class="mdl-checkbox__input vccb"  value="ajithsinghnagar" onclick = "ajithsinghnagarclick()">
+        <span class="mdl-checkbox__label">Ajith Singh Nagar</span>
+          </label>
+        </div>
+        <div id = "bhavanipuramdivid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect vccblab" for="bhavanipuramid">
+        <input type = "checkbox" name ="bhavanipuramname" id ="bhavanipuramid" class="mdl-checkbox__input vccb"  value="bhavanipuram" onclick = "bhavanipuramclick()">
+          <span class="mdl-checkbox__label">Bhavanipuram</span>
+          </label>
+        
+        </div>
+        <hr>
+        </div>
+        </div>
+        <div id = "visakhyddivid1" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="visakhydid1">
+        <input type = "checkbox" name ="visakhyd1" id ="visakhydid1" class="mdl-checkbox__input "  value="visakhyd1" onclick = "visakhydclick1()">
+          <span class="mdl-checkbox__label">Viz-Hyd-1</span>
+          </label>
+        
+        </div>
+
+        <div id = "visakhyddivid2" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="visakhydid2">
+        <input type = "checkbox" name ="visakhyd2" id ="visakhydid2" class="mdl-checkbox__input "  value="visakhyd2" onclick = "visakhydclick2()">
+          <span class="mdl-checkbox__label">Viz-Hyd-2</span>
+          </label>
+        
+        </div>
+        <div id = "visakhyddivid3" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="visakhydid3">
+        <input type = "checkbox" name ="visakhyd3" id ="visakhydid3" class="mdl-checkbox__input "  value="visakhyd3" onclick = "visakhydclick3()">
+          <span class="mdl-checkbox__label">Viz-Hyd-3</span>
+          </label>
+        
+        </div>
+        
+        <div id = "visakchendiv1id" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="visakchen1id">
+        <input type = "checkbox" name ="visakchen1" id ="visakchen1id" class="mdl-checkbox__input "  value="visakchen1" onclick = "visakchen1click()">
+          <span class="mdl-checkbox__label">Viz-Chn-1</span>
+          </label>
+        
+        </div>
+        <div id = "visakchendiv2id" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="visakchen2id">
+        <input type = "checkbox" name ="visakchen2" id ="visakchen2id" class="mdl-checkbox__input "  value="visakchen2" onclick = "visakchen2click()">
+          <span class="mdl-checkbox__label">Viz-Chn-2</span>
+          </label>
+        
+        </div>
+
+        <div id = "visakchendiv3id" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="visakchen3id">
+        <input type = "checkbox" name ="visakchen3" id ="visakchen3id" class="mdl-checkbox__input "  value="visakchen3" onclick = "visakchen3click()">
+          <span class="mdl-checkbox__label">Viz-Chn-3</span>
+          </label>
+        
+        </div>
+        <div id = "visakchendiv4id" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="visakchen4id">
+        <input type = "checkbox" name ="visakchen4" id ="visakchen4id" class="mdl-checkbox__input "  value="visakchen4" onclick = "visakchen4click()">
+          <span class="mdl-checkbox__label">Viz-Chn-4</span>
+          </label>
+        
+        </div>
+        <div id = "hydchen1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="hydchen1id">
+        <input type = "checkbox" name ="hydchen1" id ="hydchen1id" class="mdl-checkbox__input "  value="hydchen1" onclick = "hydchen1click()">
+          <span class="mdl-checkbox__label">Hyd-Chn-1</span>
+          </label>
+        
+        </div>
+
+        <div id = "hydchen2divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="hydchen2id">
+        <input type = "checkbox" name ="hydchen2" id ="hydchen2id" class="mdl-checkbox__input "  value="hydchen2" onclick = "hydchen2click()">
+          <span class="mdl-checkbox__label">Hyd-Chn-2</span>
+          </label>
+        
+        </div>
+        <div id = "hydchen3divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="hydchen3id">
+        <input type = "checkbox" name ="hydchen3" id ="hydchen3id" class="mdl-checkbox__input "  value="hydchen3" onclick = "hydchen3click()">
+          <span class="mdl-checkbox__label">Hyd-Chn-3</span>
+          </label>
+        
+        </div>
+        <div id = "elurugun1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="elurugun1id">
+        <input type = "checkbox" name ="elurugun1" id ="elurugun1id" class="mdl-checkbox__input "  value="elurugun1" onclick = "elurugun1click()">
+          <span class="mdl-checkbox__label">Eluru Guntur 1</span>
+          </label> 
+        </div>
+        <div id = "elurugun2divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="elurugun2id">
+        <input type = "checkbox" name ="elurugun2" id ="elurugun2id" class="mdl-checkbox__input "  value="elurugun2" onclick = "elurugun2click()">
+          <span class="mdl-checkbox__label">Eluru Guntur 2</span>
+          </label>
+        </div>
+        <div id = "elurugun3divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="elurugun3id">
+        <input type = "checkbox" name ="elurugun3" id ="elurugun3id" class="mdl-checkbox__input "  value="elurugun3" onclick = "elurugun3click()">
+          <span class="mdl-checkbox__label">Eluru Guntur 3</span>
+          </label>
+        </div>
+        <div id = "eluruhyd1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="eluruhyd1id">
+        <input type = "checkbox" name ="eluruhyd1" id ="eluruhyd1id" class="mdl-checkbox__input "  value="eluruhyd1" onclick = "eluruhyd1click()">
+          <span class="mdl-checkbox__label">Eluru Hyderabad 1</span>
+          </label>
+        </div>
+        <div id = "eluruhyd2divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="eluruhyd2id">
+        <input type = "checkbox" name ="eluruhyd2" id ="eluruhyd2id" class="mdl-checkbox__input "  value="eluruhyd2" onclick = "eluruhyd2click()">
+          <span class="mdl-checkbox__label">Eluru Hyderabad 2</span>
+          </label>
+        </div>
+        <div id = "eluruhyd3divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="eluruhyd3id">
+        <input type = "checkbox" name ="eluruhyd3" id ="eluruhyd3id" class="mdl-checkbox__input "  value="eluruhyd3" onclick = "eluruhyd3click()">
+          <span class="mdl-checkbox__label">Eluru Hyderabad 3</span>
+          </label>
+        </div>
+        <div id = "eluruhyd4divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="eluruhyd4id">
+        <input type = "checkbox" name ="eluruhyd4" id ="eluruhyd4id" class="mdl-checkbox__input "  value="eluruhyd4" onclick = "eluruhyd4click()">
+          <span class="mdl-checkbox__label">Eluru Hyderabad 4</span>
+          </label>
+        </div>
+        <div id = "hydmachili1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="hydmachili1id">
+        <input type = "checkbox" name ="hydmachili1" id ="hydmachili1id" class="mdl-checkbox__input "  value="hydmachili1" onclick = "hydmachili1click()">
+          <span class="mdl-checkbox__label">Hyd-Machilipatnam 1</span>
+          </label>
+        </div>
+        <div id = "hydmachili2divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="hydmachili2id">
+        <input type = "checkbox" name ="hydmachili2" id ="hydmachili2id" class="mdl-checkbox__input "  value="hydmachili2" onclick = "hydmachili2click()">
+          <span class="mdl-checkbox__label">Hyd-Machilipatnam 2</span>
+          </label>
+        </div>
+        <div id = "hydmachili3divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="hydmachili3id">
+        <input type = "checkbox" name ="hydmachili3" id ="hydmachili3id" class="mdl-checkbox__input "  value="hydmachili3" onclick = "hydmachili3click()">
+          <span class="mdl-checkbox__label">Hyd-Machilipatnam 3</span>
+          </label>
+        </div>
+        <div id = "hydmachili4divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="hydmachili4id">
+        <input type = "checkbox" name ="hydmachili4" id ="hydmachili4id" class="mdl-checkbox__input "  value="hydmachili4" onclick = "hydmachili4click()">
+          <span class="mdl-checkbox__label">Hyd-Machilipatnam 4</span>
+          </label>
+        </div>
+        <div id = "hydmachili5divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="hydmachili5id">
+        <input type = "checkbox" name ="hydmachili5" id ="hydmachili5id" class="mdl-checkbox__input "  value="hydmachili5" onclick = "hydmachili5click()">
+          <span class="mdl-checkbox__label">Hyd-Machilipatnam 5</span>
+          </label>
+        </div>
+        <div id = "hydgun1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="hydgun1id">
+        <input type = "checkbox" name ="hydgun1" id ="hydgun1id" class="mdl-checkbox__input"  value="hydgun1" onclick = "hydgun1click()">
+          <span class="mdl-checkbox__label">Hyd-Gun-1</span>
+          </label>
+        </div>
+        <div id = "hydgun2divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="hydgun2id">
+        <input type = "checkbox" name ="hydgun2" id ="hydgun2id" class="mdl-checkbox__input"  value="hydgun2" onclick = "hydgun2click()">
+          <span class="mdl-checkbox__label">Hyd-Gun-2</span>
+          </label>
+        </div>
+        <div id = "gunibri1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="gunibri1id">
+        <input type = "checkbox" name ="gunibri1" id ="gunibri1id" class="mdl-checkbox__input"  value="gunibri1" onclick = "gunibri1click()">
+          <span class="mdl-checkbox__label">Gun-Ibr-1</span>
+          </label>
+        </div>
+        <div id = "gunibri2divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="gunibri2id">
+        <input type = "checkbox" name ="gunibri2" id ="gunibri2id" class="mdl-checkbox__input"  value="gunibri2" onclick = "gunibri2click()">
+          <span class="mdl-checkbox__label">Gun-Ibr-2</span>
+          </label>
+        </div>
+        <div id = "gunibri3divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="gunibri3id">
+        <input type = "checkbox" name ="gunibri3" id ="gunibri3id" class="mdl-checkbox__input"  value="gunibri3" onclick = "gunibri3click()">
+          <span class="mdl-checkbox__label">Gun-Ibr-3</span>
+          </label>
+        </div>
+        <div id = "gunibri4divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="gunibri4id">
+        <input type = "checkbox" name ="gunibri4" id ="gunibri4id" class="mdl-checkbox__input"  value="gunibri4" onclick = "gunibri4click()">
+          <span class="mdl-checkbox__label">Gun-Ibr-4</span>
+          </label>
+        </div>
+        <div id = "gunibri5divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="gunibri5id">
+        <input type = "checkbox" name ="gunibri5" id ="gunibri5id" class="mdl-checkbox__input"  value="gunibri5" onclick = "gunibri5click()">
+          <span class="mdl-checkbox__label">Gun-Ibr-5</span>
+          </label>
+        </div>
+        <div id = "gunibri8divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="gunibri8id">
+        <input type = "checkbox" name ="gunibri8" id ="gunibri8id" class="mdl-checkbox__input"  value="gunibri8" onclick = "gunibri8click()">
+          <span class="mdl-checkbox__label">Gun-Ibr-6</span>
+          </label>
+        </div>
+        <div id = "eluruibri1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="eluruibri1id">
+        <input type = "checkbox" name ="eluruibri1" id ="eluruibri1id" class="mdl-checkbox__input"  value="eluruibri1" onclick = "eluruibri1click()">
+          <span class="mdl-checkbox__label">Eluru-Ibr-1</span>
+          </label>
+        </div>
+        <div id = "eluruibri2divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="eluruibri2id">
+        <input type = "checkbox" name ="eluruibri2" id ="eluruibri2id" class="mdl-checkbox__input"  value="eluruibri2" onclick = "eluruibri2click()">
+          <span class="mdl-checkbox__label">Eluru-Ibr-2</span>
+          </label>
+        </div>
+        <div id = "nktpamul1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="nktpamul1id">
+        <input type = "checkbox" name ="nktpamul" id ="nktpamul1id" class="mdl-checkbox__input"  value="nktpamul" onclick = "nktpamul1click()">
+          <span class="mdl-checkbox__label">NKT-Pamulakaluva</span>
+          </label>
+        </div>
+        <div id = "gollapamul1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="gollapamul1id">
+        <input type = "checkbox" name ="gollapamul" id ="gollapamul1id" class="mdl-checkbox__input"  value="gollapamul" onclick = "gollapamul1click()">
+          <span class="mdl-checkbox__label">Gollapudi-Pamulakaluva</span>
+          </label>
+        </div>
+        <div id = "guntprayana1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="guntprayana1id">
+        <input type = "checkbox" name ="guntprayana" id ="guntprayana1id" class="mdl-checkbox__input"  value="guntprayana" onclick = "guntuprayanapaduclick()">
+          <span class="mdl-checkbox__label">Guntupalli-Rayanapadu-Rly-Gate</span>
+          </label>
+        </div>
+        <div id = "nunnabypass1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="nunnabypass1id">
+        <input type = "checkbox" name ="nunnabypass" id ="nunnabypass1id" class="mdl-checkbox__input"  value="nunnabypass" onclick = "nunnabypassclick()">
+          <span class="mdl-checkbox__label">Nunna Bypass Road</span>
+          </label>
+        </div>
+        <div id = "nunnagan1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="nunnagan1id">
+        <input type = "checkbox" name ="nunnaganv" id ="nunnagan1id" class="mdl-checkbox__input"  value="nunnaganv" onclick = "nunnaganvclick()">
+          <span class="mdl-checkbox__label">Nunna Ganvaram Road</span>
+          </label>
+        </div>
+        <div id = "ibripamul1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="ibripamu1id">
+        <input type = "checkbox" name ="ibripamu" id ="ibripamu1id" class="mdl-checkbox__input"  value="ibripamu" onclick = "ibripamulclick()">
+          <span class="mdl-checkbox__label">Ibr-pamulakaluva</span>
+          </label>
+        </div>
+        <div id = "ibrihanuman1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="ibrihanuman1id">
+        <input type = "checkbox" name ="ibrihanuman" id ="ibrihanuman1id" class="mdl-checkbox__input"  value="ibrihanuman" onclick = "ibrihanuman1click()">
+          <span class="mdl-checkbox__label">Ibr-Hanumanjunction</span>
+          </label>
+        </div>
+        <div id = "ibriganna1divid" class = "uni">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect " for="ibriganna1id">
+        <input type = "checkbox" name ="ibriganna" id ="ibriganna1id" class="mdl-checkbox__input"  value="ibriganna" onclick = "ibriganna1click()">
+          <span class="mdl-checkbox__label">Ibr-Gannavaram</span>
+          </label>
+        </div>
+      </form>
+    </div>
+          </nav>
+        </div>
+      </div>
+
+    <div id = 'map'></div>
+    
+    <div id = 'inputbar'>
+      <form>
+        <input type="text" id="origin-input" placeholder="origin" name="origin"><br>
+        <input type = "text" id="destination-input" placeholder = "destination" name = "destination"><br>      
+      </form>
+    </div>
+    
+
+    <div id = "right-panel" class="rightmenu">
+      <a href="javascript:void(0)" class="rclose" onclick="closeRight()">×</a>
+    </div>
+    <div id="wmenu" class="weathermenu">
+      <a href="javascript:void(0)" class="wclose" onclick="closeNav()">×</a>
+      <div style="margin-left: 30px;font-size: 20px"><strong>Vijayawada Weather</strong></div>
+      <div id = "weather" >
+
+      </div>
+
+    </div>
+     <div id="legend">
+      <!-- My first legend! -->
+    </div>
+    <div id = "roadid">
+      <!-- flsjljslj -->
+    </div>
+    
+  </body> 
+</html>

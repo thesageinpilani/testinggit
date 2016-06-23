@@ -1,0 +1,202 @@
+      body{
+        background: #555;
+        font-family: segoe !important;
+      }
+      #map{
+        background-color: darkgrey;
+        float:right;
+
+        height: 100vh;
+        width: 100vw;
+      }
+      #right-panel {
+        height: 100vh;
+        width: 0vw;
+        line-height: 30px;
+        overflow: auto;
+        float: left;
+        background: #9AD0B6 !important;
+        /*background: white;*/
+      }
+
+      div .adp-list {
+        background-color: #9AD0B6;
+      }
+
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+
+      #right-panel select {
+        width: 100%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+
+      #drawerid {
+        background: #fff;
+      }
+      #titleid {
+
+      }
+      #destination-input{ 
+        background-color: #fff;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 35vw;
+        margin-bottom: 10px;
+        margin-top: 1vh;
+        font-family: segoe;
+      }
+      #origin-input{ 
+        background-color: #fff;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 35vw;
+        margin-bottom: 10px;
+        margin-left: 20vw;
+        margin-top: 1vh;
+        font-family: segoe;
+      }
+      input[type=text] {
+    padding: 0;
+    height: 30px;
+    position: relative;
+    left: 0;
+    outline: none;
+    border: 1px solid #cdcdcd;
+    border-color: rgba(0,0,0,.15);
+    background-color: white;
+    font-size: 16px;
+}
+
+      .uni{
+        font-size: 15px;
+        padding: 10px;
+        background-color: ;
+      }
+      #clear{
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+      .demo-layout-transparent {
+        background: url('http://getmdl.io/assets/demos/transparent.jpg') center / cover;
+      }
+      .demo-layout-transparent .mdl-layout__header,
+      .demo-layout-transparent .mdl-layout__drawer-button {
+        /* This background is dark, so we set text to white. Use 87% black instead if
+           your background is light. */
+        color: black;
+      }
+      .mdl-layout__drawer.is-visible {
+        width: 250px;
+      }
+
+      #weather{
+        
+        /*margin-left: 90vw;
+        top: 10px;
+        height: 50vh;
+        background-color: #C1F3E5;
+        width: 300px;*/
+      }
+
+      .weathermenu {
+          height: 100vh;
+          width: 0;
+          position: fixed;
+          z-index: 1;
+          top:0;
+          right:0;
+          background-color: #9AD0B6;
+          overflow-x: hidden;
+          transition: 0.5s;
+          padding-top: 60px;
+      }
+
+      .weathermenu a {
+          padding: 8px 8px 8px 32px;
+          text-decoration: none;
+          font-size: 25px;
+          color: #818181;
+          display: block;
+          transition: 0.3s
+      }
+
+      .weathermenu a:hover, .offcanvas a:focus{
+          color: #f1f1f1;
+      }
+
+      .wclose {
+          position: absolute;
+          top: 0;
+          left: 0;
+          font-size: 36px !important;
+      }
+
+      @media screen and (max-height: 450px) {
+        .weathermenu {padding-top: 15px;}
+        .weathermenu a {font-size: 18px;}
+      }
+
+      @font-face {
+          font-family: segoe;
+          src: url(segoe.woff);
+      }
+      #legend {
+        background: white;
+        padding: 10px;
+        display: none;
+        margin-right: 10px;
+      }
+      #roadid {
+        background: white;
+        padding: 10px;
+        display: none;
+        margin-right: 10px;
+        margin-top: 10px;
+      }
+
+
+      .rightmenu {
+          height: 100vh;
+          width: 0;
+          position: fixed;
+          z-index: 1;
+          top:0;
+          right:0;
+          background-color: #9AD0B6 !important;
+          overflow-x: hidden;
+          transition: 0.5s;
+          padding-top: 60px;
+      }
+
+      .rightmenu a {
+          padding: 8px 8px 8px 32px;
+          text-decoration: none;
+          font-size: 25px;
+          color: #818181;
+          display: block;
+          transition: 0.3s
+      }
+
+      .rightmenu a:hover, .offcanvas a:focus{
+          color: #f1f1f1;
+      }
+
+      .rclose {
+          position: absolute;
+          top: 0;
+          left: 0;
+          font-size: 36px !important;
+      }
+
+      @media screen and (max-height: 450px) {
+        .rightmenu {padding-top: 15px;}
+        .rightmenu a {font-size: 18px;}
+      }
